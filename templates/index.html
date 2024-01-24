@@ -46,18 +46,12 @@
                             <td>{{ row.email }}</td>
                             <td>{{ row.phone }}</td>
                             <td>
-                                <a href="/update/{{ row.id }}" class="btn btn-warning btn-xs" data-target="#modaledit{{ row.id }}" data-toggle="modal">Edit</a>
+                                <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-target="#modaledit{{row.id}}" data-toggle="modal">Edit</a>
                                 <a href="/delete/{{ row.id }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure to Delete This Data')">Delete</a>
                             </td>
                         </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-    </div>
-
-    {% for row in list %}
-    <div id="modaledit{{row.0}}" class="modal fade" role="dialog" >
+                        
+    <div id="modaledit{{row.id}}" class="modal fade" role="dialog" >
 
       <div class="modal-dialog">
    
@@ -74,18 +68,18 @@
                   
                   <div class="form-group">
                      <label>Name:</label>
-                     <input type="hidden"  name="id" value="{{row.0}}">
-                     <input type="text" class="form-control" name="name" required="1" value="{{row.1}}">
+                     <input type="hidden"  name="id" value="{{row.id}}">
+                     <input type="text" class="form-control" name="name" required="1" value="{{row.name}}">
                   </div>
   
                    <div class="form-group">
                      <label>Email:</label>
-                     <input type="text" class="form-control" name="email" required="1" value="{{row.2}}">
+                     <input type="text" class="form-control" name="email" required="1" value="{{row.email}}">
                   </div>
    
                    <div class="form-group">
                      <label>Phone:</label>
-                     <input type="text" class="form-control" name="phone" required="1" value="{{row.3}}">
+                     <input type="text" class="form-control" name="phone" required="1" value="{{row.phone}}">
                   </div>
    
                   <div class="form-group">
@@ -106,7 +100,11 @@
       </div>
    
    </div>
-    {% endfor %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 
     <div id="mymodal" class="modal fade" role="dialog" >
 

@@ -40,6 +40,31 @@ def insert():
         flash("Data Inserted Successfully")
 
         return redirect(url_for('index'))
+    
+@app.route('/update', methods = ['GET', 'POST'])
+def update():
+
+    if request.method == 'POST':
+        my_data = list.query.get(request.form.get('id'))
+
+        my_data.name = request.form['name']
+        my_data.email = request.form['email']
+        my_data.phone = request.form['phone']
+
+        db.session.commit()
+        flash("Data Updated Successfully")
+
+        return redirect(url_for('index'))    
+
+@app.route('/delete/<id>/', methods = ['GET', 'POST'])
+def delete(id):
+    my_data = list.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+
+    flash("Data Deleted Successfully")
+    
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     with app.app_context():
